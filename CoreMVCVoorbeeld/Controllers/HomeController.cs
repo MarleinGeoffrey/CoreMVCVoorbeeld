@@ -8,14 +8,22 @@ namespace CoreMVCVoorbeeld.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index(string name)
+        private string[] groenten = {"Rode kool", "Spruitjes", "Wortel","Spinazie","Bloemkool" };
+
+        public ViewResult Index(string name)
         {
-            return $"Hallo {name}";
+            ViewBag.Groet = DateTime.Now.Hour < 12 ? "Goeiemorgen" : "Goeienamiddag";
+            return View();
         }
 
-        public string Index(string name)
+        public ViewResult Groenten(string zoekGroente)
         {
-            return $"Hallo {name}";
+            ViewBag.Groenten = groenten;
+            if (!string.IsNullOrEmpty(zoekGroente))
+            {
+                ViewBag.Zoekresultaat = $"De gezochte groente is {Array.IndexOf(groenten, zoekGroente) + 1}e uit de luist";
+            }
+            return View();
         }
     }
 }
