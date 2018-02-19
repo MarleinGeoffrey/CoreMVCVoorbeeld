@@ -12,5 +12,10 @@ namespace CoreMVCVoorbeeld.Controllers
         {
             return $"Hallo {name}";
         }
+
+        public string Index(string name)
+        {
+            return $"Hallo {name}";
+        }
     }
 }
